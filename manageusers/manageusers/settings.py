@@ -121,6 +121,7 @@ ROOT_URLCONF = "manageusers.urls"
 WSGI_APPLICATION = "manageusers.wsgi.application"
 
 INSTALLED_APPS = [
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -128,6 +129,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.staticfiles",
+    # project
+    "manageusers",
+    # "manageusers.apps.AppConfig",
 
     # templates
     "bootstrapform",
@@ -140,8 +144,7 @@ INSTALLED_APPS = [
     "pinax_theme_bootstrap",
     "pinax_theme_bootstrap_account",
 
-    # project
-    "manageusers",
+
 ]
 
 ADMIN_URL = "admin:index"
@@ -189,7 +192,7 @@ ACCOUNT_USER_DISPLAY = lambda user: user.email
 ACCOUNT_PASSWORD_USE_HISTORY = True
 ACCOUNT_EMAIL_CONFIRMATION_EMAIL = True
 ACCOUNT_HOOKSET = "manageusers.hooks.AccountHookSet"
-ACCOUNT_OPEN_SIGNUP = False
+ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_LOGIN_REDIRECT_URL = "home"

@@ -8,18 +8,20 @@
 {% block head_title %}{% trans "Log in" %}{% endblock %}
 
 {% block body %}
-    <form method="POST" action="{% url 'account_login' %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-        <legend>{% trans "Log in to your account" %}</legend>
+  <div class="wrapper">
+
+    <form class="form-signin" method="POST" action="{% url 'account_login' %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+        <legend>{% trans "Faça o login na sua conta" %}</legend>
         {% csrf_token %}
         {{ form|bootstrap }}
         {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <div class="form-actions">
-            <button>{% trans "Log in" %}</button>
+            <button class="btn btn-lg btn-primary btn-block">{% trans "Log in" %}</button>
         </div>
 
-        <a href="{% url 'account_password_reset' %}" class="forgot-password">{% trans "Forgot your password?" %}</a>
+        <a href="{% url 'account_password_reset' %}" class="forgot-password">Esqueceu sua senha?</a>
 
         {% if ACCOUNT_OPEN_SIGNUP %}
             <p class="login-signup">
@@ -28,6 +30,7 @@
             </p>
         {% endif %}
     </form>
+  </div>
 {% endblock %}
 
 {% block scripts %}
