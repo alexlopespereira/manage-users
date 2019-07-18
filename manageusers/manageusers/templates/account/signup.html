@@ -18,7 +18,7 @@
         {{ form.password|bootstrap }}
         {{ form.password_confirm|bootstrap }}
         {{ form.terms_agreement }}
-        <label for="id_terms_agreement">Aceito os <a href="%s" target="_blank">  termos and condições.</a></label>
+        <label for="id_terms_agreement">Aceito os <a href="/terms" target="_blank">  termos and condições.</a></label>
         {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}

@@ -12,6 +12,7 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name="homepage.html"), name="home"),
     path("admin/", admin.site.urls),
     url(r"^account/signup/$", SignupView.as_view(), name="account_signup"),
+    # url(r"^account/signup/(?P<code>[\d]+)/$", SignupView.as_view(), name="account_signup"),
     url(r"^account/login/$", LoginView.as_view(), name="account_login"),
     url(r"^terms/$", get_terms, name="get_terms"),
     path("account/", include("account.urls")),
