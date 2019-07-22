@@ -16,6 +16,12 @@
         {{ form.username|bootstrap }}
         {{ form.email|bootstrap }}
         {{ form.password|bootstrap }}
+         <ul>
+          <li>A senha não pode ser muito parecida com o nome de usuário</li>
+          <li>Deve ter pelo menos 8 caracteres</li>
+          <li>Não pode conter somente números</li>
+          <li>Não pode ser uma senha muito comum</li>
+        </ul>
         {{ form.password_confirm|bootstrap }}
         {{ form.terms_agreement }}
         <label for="id_terms_agreement">Aceito os <a href="/terms" target="_blank">  termos and condições.</a></label>

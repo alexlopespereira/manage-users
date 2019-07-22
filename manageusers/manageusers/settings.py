@@ -8,15 +8,24 @@ BASE_DIR = PACKAGE_ROOT
 
 DEBUG = True
 
+POSTGRES_USER = os.environ['POSTGRES_USER'] or 'dbuser'
+POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD'] or 'test'
+POSTGRES_HOST = os.environ['POSTGRES_HOST'] or 'db'
+POSTGRES_DATABASE = os.environ['POSTGRES_DATABASE'] or 'manageusers'
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "dev.db",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': POSTGRES_DATABASE,
+        'USER': POSTGRES_USER,
+        'HOST': POSTGRES_HOST,
+        'PASSWORD': POSTGRES_PASSWORD,
+        'PORT': 5432,
     }
 }
 
 ALLOWED_HOSTS = [
-    "localhost","127.0.0.1"
+    "localhost", "127.0.0.1"
 ]
 
 # Local time zone for this installation. Choices can be found here:
@@ -141,9 +150,6 @@ INSTALLED_APPS = [
     "account",
     "pinax.eventlog",
     "pinax.webanalytics",
-    "pinax_theme_bootstrap",
-    "pinax_theme_bootstrap_account",
-
 
 ]
 
@@ -208,8 +214,25 @@ AUTHENTICATION_BACKENDS = [
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_SAVE_EVERY_REQUEST = True
-SESSION_COOKIE_AGE = 86400 # sec
+SESSION_COOKIE_AGE = 86400
 SESSION_COOKIE_DOMAIN = None
 SESSION_COOKIE_NAME = 'DSESSIONID'
 SESSION_COOKIE_SECURE = False
 
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 9,
+        }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
